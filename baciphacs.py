@@ -8,23 +8,18 @@ from collections import namedtuple
 DataSample = namedtuple("DataSample","label value stdev")
 
 
-def GenerateSampleBar(dataSample,maxAmplitude,numStdev):
-  """Generate the HTML code of the bar corresponding to a given data sample.
-  'dataSample': the data sample to represent (instance of DataSample).
-  'maxAmplitude': maximum value (over all samples include their value+numStdev*stdev).
-  'numStdev': set how many times the stdev should the error bars indicate.
+def GenerateHTMLHorizontalBar(relWidth,relErrorWidth):
+  """Generate the HTML code of an horizontal bar included in a potentially wider chart.
+  'relWidth': amplitude of the bar as a proportion of the full chart's width (between 0 and 1)
+  'relErrorWidth': proportion of the error margin wrt to the full chart's width.
+  The error margin is shown before and after the tip of the bar.
   """
-  if dataSample.value<0:
-    raise ValueError("Invalid data sample '%s', the value is expected to be positive" % str(dataSample))
-  if dataSample.stdev<0:
-    raise ValueError("Invalid data sample '%s', the stdev is expected to be positive" % str(dataSample))
-  if numStdev<0:
-    raise ValueError("Invalid numStdev '%s', it must be positive" % numStdev)
-  valueProportion = float(dataSample.value)/float(maxAmplitude)
-  stdevProportion = float(dataSample.stdev)/float(maxAmplitude)
-  firstPartWidth = max(0,valueProportion-numStdev*stdevProportion)
-  secondPartWidth = valueProportion-firstPartWidth
-  thirdPartWidth = numStdev*stdevProportion
+  if not (0. < relWidth < 1.):
+    raise ValueError("Invalid relwidth '%s', it must be between 0 and 1" % relWidth)
+  if not (0. < relErrorWidth < 1.):
+    raise ValueError("Invalid relwidth '%s', it must be between 0 and 1" % relErrorWidth)
+  firstPartWidth = max(0,relWidth-relErrorWidth)
+  secondPartWidth = relWidth - relErrorWidth
   return """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%%">
   <tr>
@@ -33,6 +28,6 @@ def GenerateSampleBar(dataSample,maxAmplitude,numStdev):
     <td style="width:%.1f%%;height:1ex;text-align:right">|</td>
     <td></td>
   </tr>
-</table>""" % (firstPartWidth,secondPartWidth,thirdPartWidth)
+</table>""" % (firstPartWidth,secondPartWidth,relErrorWidth)
 
   
