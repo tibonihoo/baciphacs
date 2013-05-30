@@ -14,12 +14,12 @@ def GenerateHTMLHorizontalBar(relWidth,relErrorWidth):
   'relErrorWidth': proportion of the error margin wrt to the full chart's width.
   The error margin is shown before and after the tip of the bar.
   """
-  if not (0. < relWidth < 1.):
+  if not (0. <= relWidth <= 1.):
     raise ValueError("Invalid relwidth '%s', it must be between 0 and 1" % relWidth)
-  if not (0. < relErrorWidth < 1.):
+  if not (0. <= relErrorWidth <= 1.):
     raise ValueError("Invalid relwidth '%s', it must be between 0 and 1" % relErrorWidth)
-  firstPartWidth = max(0,relWidth-relErrorWidth)
-  secondPartWidth = relWidth - relErrorWidth
+  firstPartWidth = min(1.,max(0,relWidth-relErrorWidth))
+  secondPartWidth = min(1.,max(0,relWidth - relErrorWidth))
   return """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%%">
   <tr>
