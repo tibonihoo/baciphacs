@@ -118,7 +118,7 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
       """\
 <tr>
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="margin-top:.2ex;">
+  <td style="margin-top:.2ex;width:100%;">
     MARKER
   </td>
 </tr>""",
@@ -130,7 +130,7 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
       """\
 <tr>
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="margin-top:.2ex;">
+  <td style="margin-top:.2ex;width:100%;">
     MARKER
     OTHER
   </td>
@@ -145,7 +145,7 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 <table cellspacing="0" cellpadding="0" border="0" style="width:50ex">
 <tr>
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="margin-top:.2ex;">
+  <td style="margin-top:.2ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
       <td style="width:33%;height:1ex;background-color:blue;"></td>
