@@ -220,5 +220,106 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 </tr>
 </table>""",htmlSnippet)
 
+  def test_generate_bar_chart_for_documentation(self):
+    """Test that the use case shown in documentation is valid."""
+    data = [("ba",3,2),("c",6,1),("i",2,1),("p",4,1),("h",4,1),("a",3,1),("cs",3,2)]
+    dataSamples = [DataSample._make(t) for t in data]
+    htmlChart = GenerateHTMLHorizontalBarChart(dataSamples,numStdev=2,color="blue")
+    self.assertEqual("""\
+<table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
+<tr title="3(+/-4)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">ba</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:0%;height:1ex;background-color:blue;"></td>
+      <td style="width:38%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:50%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="6(+/-2)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">c</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:50%;height:1ex;background-color:blue;"></td>
+      <td style="width:25%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:25%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="2(+/-2)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">i</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:0%;height:1ex;background-color:blue;"></td>
+      <td style="width:25%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:25%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="4(+/-2)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">p</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:25%;height:1ex;background-color:blue;"></td>
+      <td style="width:25%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:25%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="4(+/-2)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">h</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:25%;height:1ex;background-color:blue;"></td>
+      <td style="width:25%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:25%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="3(+/-2)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">a</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:12%;height:1ex;background-color:blue;"></td>
+      <td style="width:26%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:25%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="3(+/-4)">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">cs</th>
+  <td style="padding-top:.5ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:0%;height:1ex;background-color:blue;"></td>
+      <td style="width:38%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:50%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+</table>""",htmlChart)
+
+    
 if __name__ == '__main__':
   unittest.main()
