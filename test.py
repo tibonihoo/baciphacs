@@ -144,8 +144,8 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
     self.assertEqual(
       """\
 <tr title="my_title">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="padding-top:.2ex;width:100%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">my_label</th>
+  <td style="padding-top:.5ex;width:100%;">
     MARKER
   </td>
 </tr>""",
@@ -156,8 +156,8 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
     self.assertEqual(
       """\
 <tr title="my_title">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="padding-top:.2ex;width:100%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">my_label</th>
+  <td style="padding-top:.5ex;width:100%;">
     MARKER
     OTHER
   </td>
@@ -171,8 +171,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
     self.assertEqual("""\
 <table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
 <tr title="6(+/-3)">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="padding-top:.2ex;width:100%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">my_label</th>
+  <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
       <td style="width:33%;height:1ex;background-color:blue;"></td>
@@ -190,8 +190,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
     self.assertEqual("""\
 <table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
 <tr title="6(+/-3)">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
-  <td style="padding-top:.2ex;width:100%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">my_label</th>
+  <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
       <td style="width:17%;height:1ex;background-color:blue;"></td>
@@ -203,8 +203,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
   </td>
 </tr>
 <tr title="5(+/-12)">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">other_label</th>
-  <td style="padding-top:.2ex;width:100%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">other_label</th>
+  <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
       <td style="width:0%;height:1ex;background-color:blue;"></td>

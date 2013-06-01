@@ -44,8 +44,8 @@ def GenerateHTMLLabelledRow(label,title,htmlRowData):
   """
   return """\
 <tr title="%s">
-  <th style="padding-top:.2ex;padding-right:1ex;text-align:right;">%s</th>
-  <td style="padding-top:.2ex;width:100%%;">
+  <th style="padding-top:.5ex;padding-right:1ex;text-align:right;">%s</th>
+  <td style="padding-top:.5ex;width:100%%;">
 %s
   </td>
 </tr>""" % (title,label,"\n".join("    %s"%line for line in htmlRowData.splitlines()))
