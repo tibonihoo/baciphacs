@@ -31,5 +31,5 @@ dataSamples = [DataSample._make(t) for t in data]
 print GenerateHTMLHorizontalBarChart(dataSamples,numStdev=2,color="blue")
 ```
 
-The Python code above will generate an HTML snippet that [renders like a bar chart](doc/index.html#horizontal_bars_rendering).
+The Python code above will generate an HTML snippet that [renders like a bar chart](http://htmlpreview.github.io/?https://github.com/tibonihoo/baciphacs/blob/master/doc/index.html).
 
