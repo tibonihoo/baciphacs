@@ -11,13 +11,13 @@ from baciphacs import GenerateHTMLHorizontalBarChart
 class TestGenerateHTMLHorizontalBar(unittest.TestCase):
   
   def test_generate_bar_with_values_is_ok(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(.6,.1)
+    htmlSnippet = GenerateHTMLHorizontalBar(.6,.1,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:50%;height:1ex;background-color:blue;"></td>
-  <td style="width:10%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:50%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:10%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:10%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -25,13 +25,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_bar_with_stdev_bigger_than_value_first_part_is_null(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(.1,.3)
+    htmlSnippet = GenerateHTMLHorizontalBar(.1,.3,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:0%;height:1ex;background-color:blue;"></td>
-  <td style="width:10%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:0%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:10%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:30%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -39,28 +39,28 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
     
   def test_generate_bar_with_negative_relWidth_raises_exception(self):
-    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,-.6,.3)
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,-.6,.3,"mycolor")
 
   def test_generate_bar_with_negative_relErrorWidth_raises_exception(self):
-    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,-.3)
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,-.3,"mycolor")
     
   def test_generate_bar_with_relWidth_greater_than_one_raises_exception(self):
-    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,6,.3)
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,6,.3,"mycolor")
 
   def test_generate_bar_with_relErrorWidth_greater_than_one_raises_exception(self):
-    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,3)
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,3,"mycolor")
     
   def test_generate_bar_with_relErrorWidth_plus_relWidth_greater_than_one_raises_exception(self):
-    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,.5)
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBar,.6,.5,"mycolor")
     
   def test_generate_bar_with_relErrorWidth_0_is_ok(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(.1,0)
+    htmlSnippet = GenerateHTMLHorizontalBar(.1,0,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:10%;height:1ex;background-color:blue;"></td>
-  <td style="width:0%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:10%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:0%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:0%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -68,13 +68,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_bar_with_relWidth_0_is_ok(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(0,.3)
+    htmlSnippet = GenerateHTMLHorizontalBar(0,.3,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:0%;height:1ex;background-color:blue;"></td>
-  <td style="width:0%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:0%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:0%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:30%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -82,13 +82,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
     
   def test_generate_bar_with_relWidth_1_is_ok(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(1.,0)
+    htmlSnippet = GenerateHTMLHorizontalBar(1.,0,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:100%;height:1ex;background-color:blue;"></td>
-  <td style="width:0%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:100%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:0%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:0%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -96,13 +96,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_bar_with_relErrorWidth_1_is_ok(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(0,1)
+    htmlSnippet = GenerateHTMLHorizontalBar(0,1,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:0%;height:1ex;background-color:blue;"></td>
-  <td style="width:0%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:0%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:0%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:100%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -110,13 +110,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_bar_with_relErrorWidth_rounding_to_upper_int_increase_left_error_width(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(.353,.1765)
+    htmlSnippet = GenerateHTMLHorizontalBar(.353,.1765,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:17%;height:1ex;background-color:blue;"></td>
-  <td style="width:18%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:17%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:18%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:18%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -124,13 +124,13 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_bar_with_relErrorWidth_rounding_to_lower_int_increase_right_error_width(self):
-    htmlSnippet = GenerateHTMLHorizontalBar(.226,.113)
+    htmlSnippet = GenerateHTMLHorizontalBar(.226,.113,"mycolor")
     self.assertEqual(
       """\
 <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
 <tr>
-  <td style="width:11%;height:1ex;background-color:blue;"></td>
-  <td style="width:12%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:11%;height:1ex;background-color:mycolor;"></td>
+  <td style="width:12%;height:1ex;background-color:mycolor;text-align:left">|</td>
   <td style="width:12%;height:1ex;text-align:right">|</td>
   <td></td>
 </tr>
@@ -167,7 +167,7 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
 class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 
   def test_generate_bar_chart_with_single_sample(self):
-    htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1)],3)
+    htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1)],3,"mycolor")
     self.assertEqual("""\
 <table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
 <tr title="6(+/-3)">
@@ -175,8 +175,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
   <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
-      <td style="width:33%;height:1ex;background-color:blue;"></td>
-      <td style="width:34%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:33%;height:1ex;background-color:mycolor;"></td>
+      <td style="width:34%;height:1ex;background-color:mycolor;text-align:left">|</td>
       <td style="width:33%;height:1ex;text-align:right">|</td>
       <td></td>
     </tr>
@@ -186,7 +186,7 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 </table>""",htmlSnippet)
 
   def test_generate_bar_chart_with_more_than_one_sample(self):
-    htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1),DataSample("other_label",5,4)],3)
+    htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1),DataSample("other_label",5,4)],3,"mycolor")
     self.assertEqual("""\
 <table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
 <tr title="6(+/-3)">
@@ -194,8 +194,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
   <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
-      <td style="width:17%;height:1ex;background-color:blue;"></td>
-      <td style="width:18%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:17%;height:1ex;background-color:mycolor;"></td>
+      <td style="width:18%;height:1ex;background-color:mycolor;text-align:left">|</td>
       <td style="width:18%;height:1ex;text-align:right">|</td>
       <td></td>
     </tr>
@@ -207,8 +207,8 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
   <td style="padding-top:.5ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
-      <td style="width:0%;height:1ex;background-color:blue;"></td>
-      <td style="width:29%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:0%;height:1ex;background-color:mycolor;"></td>
+      <td style="width:29%;height:1ex;background-color:mycolor;text-align:left">|</td>
       <td style="width:71%;height:1ex;text-align:right">|</td>
       <td></td>
     </tr>
