@@ -109,14 +109,41 @@ class TestGenerateHTMLHorizontalBar(unittest.TestCase):
 </table>""",
       htmlSnippet)
 
+  def test_generate_bar_with_relErrorWidth_rounding_to_upper_int_increase_left_error_width(self):
+    htmlSnippet = GenerateHTMLHorizontalBar(.353,.1765)
+    self.assertEqual(
+      """\
+<table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+<tr>
+  <td style="width:17%;height:1ex;background-color:blue;"></td>
+  <td style="width:18%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:18%;height:1ex;text-align:right">|</td>
+  <td></td>
+</tr>
+</table>""",
+      htmlSnippet)
 
+  def test_generate_bar_with_relErrorWidth_rounding_to_lower_int_increase_right_error_width(self):
+    htmlSnippet = GenerateHTMLHorizontalBar(.226,.113)
+    self.assertEqual(
+      """\
+<table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+<tr>
+  <td style="width:11%;height:1ex;background-color:blue;"></td>
+  <td style="width:12%;height:1ex;background-color:blue;text-align:left">|</td>
+  <td style="width:12%;height:1ex;text-align:right">|</td>
+  <td></td>
+</tr>
+</table>""",
+      htmlSnippet)
+    
 class TestGenerateHTMLLabelledRow(unittest.TestCase):
 
   def test_generate_row_with_label_is_ok(self):
-    htmlSnippet = GenerateHTMLLabelledRow("my_label","MARKER")
+    htmlSnippet = GenerateHTMLLabelledRow("my_label","my_title","MARKER")
     self.assertEqual(
       """\
-<tr>
+<tr title="my_title">
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
   <td style="margin-top:.2ex;width:100%;">
     MARKER
@@ -125,10 +152,10 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
       htmlSnippet)
 
   def test_generate_row_with_label_and_multine_data_is_indented_correctly(self):
-    htmlSnippet = GenerateHTMLLabelledRow("my_label","MARKER\nOTHER")
+    htmlSnippet = GenerateHTMLLabelledRow("my_label","my_title","MARKER\nOTHER")
     self.assertEqual(
       """\
-<tr>
+<tr title="my_title">
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
   <td style="margin-top:.2ex;width:100%;">
     MARKER
@@ -142,14 +169,14 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
   def test_generate_bar_chart_with_single_sample(self):
     htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1)],3)
     self.assertEqual("""\
-<table cellspacing="0" cellpadding="0" border="0" style="width:50ex">
-<tr>
+<table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
+<tr title="6(+/-3)">
   <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
   <td style="margin-top:.2ex;width:100%;">
     <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
     <tr>
       <td style="width:33%;height:1ex;background-color:blue;"></td>
-      <td style="width:33%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:34%;height:1ex;background-color:blue;text-align:left">|</td>
       <td style="width:33%;height:1ex;text-align:right">|</td>
       <td></td>
     </tr>
@@ -158,7 +185,37 @@ class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 </tr>
 </table>""",htmlSnippet)
 
+  def test_generate_bar_chart_with_more_than_one_sample(self):
+    htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1),DataSample("other_label",5,4)],3)
+    self.assertEqual("""\
+<table cellspacing="0" cellpadding="0" border="0" style="width:80ex;font-family:monospace;">
+<tr title="6(+/-3)">
+  <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">my_label</th>
+  <td style="margin-top:.2ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:17%;height:1ex;background-color:blue;"></td>
+      <td style="width:18%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:18%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+<tr title="5(+/-12)">
+  <th style="margin-top:.2ex;padding-right:1ex;text-align:right;">other_label</th>
+  <td style="margin-top:.2ex;width:100%;">
+    <table cellspacing="0" cellpadding="0" border="0" style="width:100%">
+    <tr>
+      <td style="width:0%;height:1ex;background-color:blue;"></td>
+      <td style="width:29%;height:1ex;background-color:blue;text-align:left">|</td>
+      <td style="width:71%;height:1ex;text-align:right">|</td>
+      <td></td>
+    </tr>
+    </table>
+  </td>
+</tr>
+</table>""",htmlSnippet)
 
-    
 if __name__ == '__main__':
   unittest.main()
