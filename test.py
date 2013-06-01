@@ -166,6 +166,9 @@ class TestGenerateHTMLLabelledRow(unittest.TestCase):
 
 class TestGenerateHTMLHorizontalBarChart(unittest.TestCase):
 
+  def test_generate_bar_chart_with_negative_numStdev_raises(self):
+    self.assertRaises(ValueError,GenerateHTMLHorizontalBarChart,[DataSample("my_label",6,1)],-3,"mycolor")
+  
   def test_generate_bar_chart_with_single_sample(self):
     htmlSnippet = GenerateHTMLHorizontalBarChart([DataSample("my_label",6,1)],3,"mycolor")
     self.assertEqual("""\
