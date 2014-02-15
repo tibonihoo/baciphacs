@@ -3,6 +3,14 @@ baciphacs
 
 Bar charts in pure HTML and CSS.
 
+.. image:: https://pypip.in/v/$REPO/badge.png
+    :target: https://crate.io/packages/$REPO/
+    :alt: Latest PyPI version
+
+.. image:: https://pypip.in/d/$REPO/badge.png
+    :target: https://crate.io/packages/$REPO/
+    :alt: Number of PyPI downloads
+
 This library is designed for the kind of (desesperate) situation where
 you want to display bar charts but with the constraint that your HTML
 document must not depend on additional files or remote webservices.
