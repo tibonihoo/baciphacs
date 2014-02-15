@@ -18,7 +18,7 @@ baciphacs is licensed under [the 2 close BSD License](LICENSE.txt),
 and more detailed information about it can be found at
 [GitHub](https://github.com/tibonihoo/baciphacs).
 
-It is tested on Travis-CI: [![Build Status](https://www.travis-ci.org/tibonihoo/baciphacs.png?branch=master)](https://www.travis-ci.org/tibonihoo/baciphacs) [![Coverage Status](https://coveralls.io/repos/tibonihoo/baciphacs/badge.png)](https://coveralls.io/r/tibonihoo/baciphacs)
+It is tested on Travis-CI: [![Build Status](https://travis-ci.org/tibonihoo/baciphacs.png?branch=master)](https://travis-ci.org/tibonihoo/baciphacs) [![Coverage Status](https://coveralls.io/repos/tibonihoo/baciphacs/badge.png)](https://coveralls.io/r/tibonihoo/baciphacs)
 
 
 Example for horizontal bar charts
