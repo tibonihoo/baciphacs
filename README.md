@@ -3,8 +3,8 @@ baciphacs
 
 Bar charts in pure HTML and CSS.
 
-[![PyPi version](https://pypip.in/v/baciphacs/badge.png)](https://crate.io/packages/baciphacs/)
-[![PyPi downloads](https://pypip.in/d/baciphacs/badge.png)](https://crate.io/packages/baciphacs/)
+[![PyPi version](https://pypip.in/v/baciphacs/badge.png)](https://crate.io/packages/baciphacs)
+[![PyPi downloads](https://pypip.in/d/baciphacs/badge.png)](https://crate.io/packages/baciphacs)
 
 This library is designed for the kind of (desesperate) situation where
 you want to display bar charts but with the constraint that your HTML
