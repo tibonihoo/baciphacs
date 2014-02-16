@@ -3,7 +3,7 @@ baciphacs
 
 Bar charts in pure HTML and CSS.
 
-[![PyPi version](https://pypip.in/v/baciphacs/badge.png)](https://crate.io/packages/baciphacs)
+[![PyPi version](https://pypip.in/v/baciphacs/badge.png)](https://crate.io/packages/baciphacs) 
 [![PyPi downloads](https://pypip.in/d/baciphacs/badge.png)](https://crate.io/packages/baciphacs)
 
 This library is designed for the kind of (desesperate) situation where
@@ -21,7 +21,7 @@ baciphacs is licensed under [the 2 close BSD License](LICENSE.txt),
 and more detailed information about it can be found at
 [GitHub](https://github.com/tibonihoo/baciphacs).
 
-It is tested on Travis-CI: [![Build Status](https://travis-ci.org/tibonihoo/baciphacs.png?branch=master)](https://travis-ci.org/tibonihoo/baciphacs) [![Coverage Status](https://coveralls.io/repos/tibonihoo/baciphacs/badge.png)](https://coveralls.io/r/tibonihoo/baciphacs)
+It is tested on Travis-CI: [![Build Status](https://travis-ci.org/tibonihoo/baciphacs.png?branch=master)](https://travis-ci.org/tibonihoo/baciphacs)
 
 
 Example for horizontal bar charts
